@@ -16,7 +16,7 @@ id: 3
 
 </exercise>
 
-<exercise id="2" title="Functions: Exercises" type = "slides">
+<exercise id="2" title="Functions: Exercises">
 
 ### 1) Write a function that can compute the volume of a cylinder.
 

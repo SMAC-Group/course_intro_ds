@@ -250,10 +250,61 @@ my_lm = function(X, y, alpha=0.05){
 
 ---
 
+Let us plot some data on which we will test our implementation of the least squares.
+
+
 ```r
+# load some data
 library(gamair)
 data(hubble)
 
+# plot data and result from a simple linear regression
+par(mar=c(5.1, 4.5, 4.1, 2.1)) # for margin
+plot(hubble$x, hubble$y, 
+     xlab = "Distance (Mpc)", 
+     ylab = bquote("Velocity (km" ~ s^-1 ~ ")")
+     ) # plot
+text(x = hubble$x, y = hubble$y-35, labels = hubble$Galaxy, cex = .7)
+
+# add line of a linear regression
+abline(lm(y~x, data = hubble), col = "blue4")
+```
+
+Notes: Note that
+```r
+help(hubble)
+```
+will returns
+```
+Description
+Data on distances and velocities of 24 galaxies containing Cepheid stars, from the Hubble space telescope key project to measure the Hubble constant.
+
+Format
+A data frame with 3 columns and 24 rows. The columns are:
+
+Galaxy
+A (factor) label identifying the galaxy.
+
+y
+The galaxy's relative velocity in kilometres per second.
+
+x
+The galaxy's distance in Mega parsecs. 1 parsec is 3.09e13 km.
+
+```
+
+---
+
+The code on the previous slide will returns: 
+
+<div style="text-align:center"><img src="galaxies.png" alt=" " width="55%">
+
+
+---
+
+We then compare our implementation with the `lm` function in `R`.
+
+```r
 # Linear regression with lm() function
 fit_lm = lm(hubble$y ~ hubble$x-1)
 
@@ -268,7 +319,7 @@ results = cbind(manual_results, base_results)
 row.names(results) = c("Beta", "Sigma")
 ```
 
-Notes: Let's call our implementation of the least squares and compare it with the `lm` function in `R`. Note that
+Notes: Note that
 ```r
 help(lm)
 ```
@@ -309,7 +360,7 @@ A recursive function consists of two parts: the recursive call and the base case
 
 ---
 
-A simple example to present recursion is a function that returns the factorial of a positive integer. Denoted by \\(n!\\), the factrial of a positive integer is the product of all positive integer elss than or equal to \\(n\\).
+A simple example to present recursion is a function that returns the factorial of a positive integer. Denoted by \\(n!\\), the factorial of a positive integer is the product of all positive integer smaller than or equal to \\(n\\).
 
 $$\begin{equation}
 n !=n \times(n-1) \times(n-2) \times(n-3) \times \cdots \times 3 \times 2 \times 1
