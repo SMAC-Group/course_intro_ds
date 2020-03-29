@@ -76,9 +76,7 @@ Notice that everything in R is a function. For example,
 [1] 3
 ```
 
-Notes: The symbol "+" has been assigned an action through a function in R. Indeed
-
-For example, 
+Notes: The symbol "+" has been assigned an action through a function in R. For example:
 
 ```r
 `+`
@@ -91,7 +89,7 @@ function (e1, e2)  .Primitive("+")
 where `.Primitive("+")` is an "internally implemented" function in the base R implementation.
 ---
 
-So we can define our own mathematical operator.
+Therefore we can define our own mathematical operator.
 
 ```r
 `:)` = function(x, y){
@@ -121,7 +119,7 @@ Notes: We can now call the `:)` operator as a function.
 [1] 12
 ```
 
---
+---
 
 ```r
 abs_sqrt = function(x = 1){
