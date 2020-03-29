@@ -127,7 +127,9 @@ Notes: We could define the function `:)` as an operator of this form as followsc
 `%:)%` = function(x, y){
     abs(x*y)
 }
+```
 
+```r
 -2 %:)% 4
 ```
 
