@@ -121,7 +121,7 @@ We can also define a function as an operator that works similarly to the `+` fun
 [1] 12
 ```
 
-Notes: We could define the function `:)` as an operator of this form as followscan now call the  operator as a function.
+Notes: For example, we could define the function `:)` (created in the previous slide) as an operator of this form as follows
 
 ```r
 `%:)%` = function(x, y){
