@@ -11,7 +11,7 @@ type: slides
 Notes: When you define a function you give a name to a set of actions you want the computer to perform. When you **call** a function you are telling the computer to run (or execute) that set of actions.
 ---
 
-Let's define a function that return the result of the addition of two numbers.
+Let's define a function that returns the result of the addition of two numbers.
 
 ```r
 add = function(x, y){
@@ -61,7 +61,7 @@ Notes: Note that the code `add(x=4)` returns 7 because the default value for `y`
 Notice that everything in R is a function. For example,
 
 ```r
-# The followings do the same:
+# The following commands perform the same operation:
 1+2
 ```
 
@@ -76,6 +76,19 @@ Notice that everything in R is a function. For example,
 [1] 3
 ```
 
+Notes: The symbol "+" has been assigned an action through a function in R. Indeed
+
+For example, 
+
+```r
+`+`
+```
+will return
+
+```out
+function (e1, e2)  .Primitive("+")
+```
+where `.Primitive("+")` is an "internally implemented" function in the base R implementation.
 ---
 
 So we can define our own mathematical operator.
