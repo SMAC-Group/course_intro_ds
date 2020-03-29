@@ -104,8 +104,10 @@ Therefore we can define our own mathematical operator.
 ```
 
 Notes: We can now call the `:)` operator as a function.
+
 ---
 
+We can also define a function as an operator that works similarly to the `+` function as follows:
 
 ```r
 `%^%` = function(x, y){
@@ -117,6 +119,20 @@ Notes: We can now call the `:)` operator as a function.
 
 ```out
 [1] 12
+```
+
+Notes: We could define the function `:)` as an operator of this form as followscan now call the  operator as a function.
+
+```r
+`%:)%` = function(x, y){
+    abs(x*y)
+}
+
+-2 %:)% 4
+```
+
+```out
+[1] 8
 ```
 
 ---
