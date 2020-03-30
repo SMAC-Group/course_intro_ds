@@ -208,21 +208,19 @@ gen_prod = function(first_arg=matrix(rnorm(9),3,3),
   
   # matrix by scalar multiplication 
   if(dim(second_arg)[1] == 1 & dim(second_arg)[2] == 1){
-    prod = first_arg * second_arg[1,1]
+    first_arg * second_arg[1,1]
   }else{
     if(dim(first_arg)[2] == dim(second_arg)[1]){
-      prod = first_arg %*% second_arg
+      first_arg %*% second_arg
     }else{
       if(dim(first_arg)[2] == dim(second_arg)[2]){
         warning("Second object has been transposed.")
-        prod = first_arg %*% t(second_arg)
+        first_arg %*% t(second_arg)
       }else{
         stop("Object dimensions are not compatible!")
       }
     } 
   }
-  
-  return(prod)
 }
 
 ```
@@ -268,26 +266,24 @@ gen_prod = function(first_arg=matrix(rnorm(9),3,3),
   
   # matrix by scalar multiplication 
   if(dim(second_arg)[1] == 1 & dim(second_arg)[2] == 1){
-    prod = first_arg * second_arg[1,1]
+    first_arg * second_arg[1,1]
   }else{
     if(dim(first_arg)[2] == dim(second_arg)[1]){
-      prod = first_arg %*% second_arg
+      first_arg %*% second_arg
     }else{
       if(dim(first_arg)[2] == dim(second_arg)[2]){
         warning("Second object has been transposed.")
-        prod = first_arg %*% t(second_arg)
+        first_arg %*% t(second_arg)
       }else{
         stop("Object dimensions are not compatible!")
       }
     } 
   }
-  
-  return(prod)
 }
 
 ```
 
-Notes: Also notice that the `gen_prod()` function makes use of the base functions `warning()` and `stop()` which are examples of a set of functions in R that are used to inform the function user of eventual issues or problems when executing the function.
+Notes: Also notice that the `gen_prod()` function makes use of the base functions `warning()` and `stop()` which are examples of a set of functions in R that are used to inform the user of eventual issues or problems when executing the function.
 
 For example, 
 
@@ -345,6 +341,8 @@ my_lm = function(X, y, alpha=0.05){
   return(result)
 }
 ```
+
+Notes: The `my_lm()` function creates a series of objects that are relevant to least squares regression and places them in a `list` structure. This list then gets included in the `return()` function at the end of the function. 
 
 ---
 
