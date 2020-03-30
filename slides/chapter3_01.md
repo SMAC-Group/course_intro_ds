@@ -340,11 +340,11 @@ my_lm = function(X, y, alpha=0.05){
 }
 ```
 
-Notes: The `my_lm()` function creates a series of objects that are relevant to least squares regression and places them in a `list` structure. This list then gets included in the `return()` function at the end of the function. 
+Notes: The `my_lm()` function creates a series of objects that are relevant to least squares regression and places them in a `list` structure. This list then gets included in the `return()` function at the end of the function. The output of the function would have been the same simply by inserting the object `result` at the end of the function. However, when functions become more complex, it is helpful to use the `return()` function to make sure that one obtains the outputs of interest.
 
 ---
 
-Let us plot some data on which we will test our implementation of the least squares.
+Let us plot some data on which we will first use the R implementation of least squares and successively test ours.
 
 
 ```r
@@ -368,7 +368,7 @@ Notes: Note that
 ```r
 help(hubble)
 ```
-will returns
+will return
 ```
 Description
 Data on distances and velocities of 24 galaxies containing Cepheid stars, from the Hubble space telescope key project to measure the Hubble constant.
@@ -389,14 +389,14 @@ The galaxy's distance in Mega parsecs. 1 parsec is 3.09e13 km.
 
 ---
 
-The code on the previous slide will returns: 
+The code on the previous slide will return: 
 
 <div style="text-align:center"><img src="galaxies.png" alt=" " width="55%">
 
 
 ---
 
-We then compare our implementation with the `lm` function in `R`.
+We then compare the previous results with our implementation of least squares.
 
 ```r
 # Linear regression with lm() function
@@ -406,18 +406,26 @@ fit_lm = lm(hubble$y ~ hubble$x-1)
 fit_my_lm = my_lm(X = hubble$x, y = hubble$y)
 
 # Compare outputs
-manual_results = c(fit_my_lm$beta, fit_my_lm$sigma2)
+my_lm_results = c(fit_my_lm$beta, fit_my_lm$sigma2)
 base_results = c(fit_lm$coefficients, 
                  (1/fit_lm$df.residual)*t(fit_lm$residuals)%*%fit_lm$residuals)
-results = cbind(manual_results, base_results)
+results = cbind(my_lm_results, base_results)
 row.names(results) = c("Beta", "Sigma")
+
+results
+```
+
+```out
+##        my_lm_results base_results
+## Beta        76.58117     76.58117
+## Sigma    67046.33165  67046.33165
 ```
 
 Notes: Note that
 ```r
 help(lm)
 ```
-will returns
+will return
 ```
 lm {stats}	R Documentation
 Fitting Linear Models
@@ -426,35 +434,21 @@ lm is used to fit linear models. It can be used to carry out regression, single 
 
 ```
 
-
-
----
-
-```r
-results
-```
-
-```out
-##       manual_results base_results
-## Beta        76.58117     76.58117
-## Sigma    67046.33165  67046.33165
-```
-
 ---
 
  <div align="center">
- <big> <b> Recursive function </b> </big>
+ <big> <b> Recursive Functions </b> </big>
  </div> 
 
-A recursive function is a function that calls itself during its execution. This enables the function to repeat itself several times, outputting the result and the end of each iteration. 
+A recursive function is a function that calls itself during its execution. This enables the function to repeat itself several times, outputting the result at the end of each iteration. 
 
-A big difference between recursion and iteration is the way that they end. While a loop executes the block of code, checking each time to see if it is at the end of the sequence, there is no such sequential end for recursive code.
+The main difference between a recursion and an iteration consists in their "stopping rule". Indeed, a loop executes a block of code up to a maximum amount of times (iterations) after which it stops the execution. On the other hand, a recursion will depend on the conditions that the function needs to respect (achieve) in order to stop execution (i.e. the stopping rule is embedded within the function itself). 
 
 A recursive function consists of two parts: the recursive call and the base case. 
 
 ---
 
-A simple example to present recursion is a function that returns the factorial of a positive integer. Denoted by \\(n!\\), the factorial of a positive integer is the product of all positive integer smaller than or equal to \\(n\\).
+A simple example to present a recursion is a function that returns the factorial of a positive integer. Denoted by \\(n!\\), the factorial of a positive integer is the product of all positive integer smaller than or equal to \\(n\\).
 
 $$\begin{equation}
 n !=n \times(n-1) \times(n-2) \times(n-3) \times \cdots \times 3 \times 2 \times 1
@@ -494,5 +488,39 @@ for(i in seq(6)){
 ```
 ---
 
+A simple example to present a recursion is a function that returns the factorial of a positive integer. Denoted by \\(n!\\), the factorial of a positive integer is the product of all positive integer smaller than or equal to \\(n\\).
 
+$$\begin{equation}
+n !=n \times(n-1) \times(n-2) \times(n-3) \times \cdots \times 3 \times 2 \times 1
+\end{equation}$$
+
+Below is an example of a recursive implementation of the factorial of a positive integer.
+
+```r
+my_factorial = function(x){
+  # Base case
+  if(x == 0){
+    return(1)
+  }else if(x == 1){
+    return(1)
+  # Recursive call
+  }else{
+    return(x*my_factorial(x-1))
+  }
+}
+```
+
+Notes: What would happen if we provided the argument `-1` to `my_factorial()`?
+
+```r
+my_factorial(-1)
+```
+
+```out
+Error: C stack usage  7971492 is too close to the limit
+```
+
+The number provided in the output error will change depending on different factors. What does the error mean? How can you avoid the problem or notify the user of the issue? See previous examples.
+
+---
 
