@@ -200,8 +200,7 @@ Notes: Sometimes, depending on the complexity of the computations, it may be app
 # Example: Matrix and scalar product
 
 ```r
-gen_prod = function(first_arg=matrix(rnorm(9),3,3), 
-                    second_arg=5){
+gen_prod = function(first_arg=matrix(rnorm(9),3,3), second_arg=5){
   # convert input as matrices 
   first_arg = as.matrix(first_arg)
   second_arg = as.matrix(second_arg)
@@ -258,8 +257,7 @@ will return
 # Example: Matrix and scalar product
 
 ```r
-gen_prod = function(first_arg=matrix(rnorm(9),3,3), 
-                    second_arg=5){
+gen_prod = function(first_arg=matrix(rnorm(9),3,3), second_arg=5){
   # convert input as matrices 
   first_arg = as.matrix(first_arg)
   second_arg = as.matrix(second_arg)
