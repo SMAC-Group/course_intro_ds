@@ -139,9 +139,16 @@ Notes: For example, we could define the function `:)` (created in the previous s
 
 ---
 
+There is no unique way to create a function that delivers a specific output. For example, suppose we wanted to create a function that delivers the square root of a number and allows this number to be negative (therefore also returning the negative sign when the square root is computed).
+
+
 ```r
 abs_sqrt = function(x = 1){
-  sign(x) * sqrt(abs(x))
+  if(x >= 0){
+    return(sqrt(x))
+  }else{
+    return(-sqrt(-x))
+  }
 }
 
 abs_sqrt(9)
@@ -155,38 +162,97 @@ abs_sqrt(9)
 abs_sqrt(-9)
 ```
 
-
 ```out
 [1] -3
 ```
 
+Notes: This function explicitly uses control structures (from the previous chapter) to obtain the desired result.
+
 ---
 
-Similarly,
+R has many base (or package) functions that can be used to achieve the same goal.
 
 ```r
 abs_sqrt2 = function(x = 1){
-  if(x >= 0){
-    return(sqrt(x))
-  }else{
-    return(-sqrt(-x))
-  }
+  sign(x) * sqrt(abs(x))
 }
 
 abs_sqrt2(9)
-```
-
-```r
-abs_sqrt2(-9)
 ```
 
 ```out
 [1] 3
 ```
 
+```r
+abs_sqrt2(-9)
+```
+
 
 ```out
 [1] -3
+```
+
+Notes: Sometimes, depending on the complexity of the computations, it may be appropriate to make maximum use of already implemented functions in R that probably are computationally efficient.
+
+---
+
+# Example: Matrix and scalar product
+
+```r
+gen_prod = function(first_arg=matrix(rnorm(9),3,3), 
+                    second_arg=5){
+  # convert input as matrices 
+  first_arg = as.matrix(first_arg)
+  second_arg = as.matrix(second_arg)
+  
+  # matrix by scalar multiplication 
+  if(dim(second_arg)[1] == 1 & dim(second_arg)[2] == 1){
+    prod = first_arg * second_arg[1,1]
+  }else{
+    if(dim(first_arg)[2] == dim(second_arg)[1]){
+      prod = first_arg %*% second_arg
+    }else{
+      if(dim(first_arg)[2] == dim(second_arg)[2]){
+        warning("Second object has been transposed.")
+        prod = first_arg %*% t(second_arg)
+      }else{
+        stop("Object dimensions are not compatible!")
+      }
+    } 
+  }
+  
+  return(prod)
+}
+
+```
+
+Notes: Note that the function `gen_prod()` can perform simple scalar multiplication, matrix by scalar multiplication as well as matrix multiplication depending on the dimensions of the inputs.
+
+For example, 
+
+```r
+gen_prod(3,5)
+```
+will return
+
+```out
+     [,1]
+[1,]   15
+```
+
+while
+
+```r
+gen_prod(matrix(seq(9), ncol=3),5)
+```
+will return
+
+```out
+     [,1] [,2] [,3]
+[1,]    5   20   35
+[2,]   10   25   40
+[3,]   15   30   45
 ```
 
 ---
@@ -221,32 +287,35 @@ gen_prod = function(first_arg=matrix(rnorm(9),3,3),
 
 ```
 
-Notes: Note that the function `gen_prod()` can perform simple scalar multiplication, matrix by scalar multiplication  as well as matrix multiplication depending on the dimensions of the inputs.
+Notes: Also notice that the `gen_prod()` function makes use of the base functions `warning()` and `stop()` which are examples of a set of functions in R that are used to inform the function user of eventual issues or problems when executing the function.
 
 For example, 
 
 ```r
-gen_prod(3,5)
+gen_prod(matrix(seq(9), ncol=3), matrix(seq(25), ncol=5))
 ```
-will returns
+will return
 
 ```out
-     [,1]
-[1,]   15
+Error in gen_prod(matrix(seq(9), ncol = 3), matrix(seq(25), ncol = 5)) : 
+  Object dimensions are not compatible!
 ```
 
 while
 
 ```r
-gen_prod(matrix(seq(9), ncol=3),5)
+gen_prod(matrix(seq(9), ncol=3), matrix(seq(12), ncol=3))
 ```
-will returns
+will return
 
 ```out
-     [,1] [,2] [,3]
-[1,]    5   20   35
-[2,]   10   25   40
-[3,]   15   30   45
+     [,1] [,2] [,3] [,4]
+[1,]   84   96  108  120
+[2,]   99  114  129  144
+[3,]  114  132  150  168
+Warning message:
+In gen_prod(matrix(seq(9), ncol = 3), matrix(seq(12), ncol = 3)) :
+  Second object has been transposed.
 ```
 
 ---
