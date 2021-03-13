@@ -1,1 +1,6 @@
 install.packages("plot.matrix")
+install.packages("plot.matrix")
+install.packages("dplyr")
+install.packages("poliscidata")
+install.packages("gapminder")
+install.packages("janitor")
