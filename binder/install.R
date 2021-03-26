@@ -11,3 +11,5 @@ install.packages("hrbrthemes")
 install.packages("ggplot2")
 install.packages("scico")
 install.packages("magick")
+install.packages("renpow")
+
