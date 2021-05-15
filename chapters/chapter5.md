@@ -3,7 +3,7 @@ title: 'Chapter 5: Data Visualization'
 description:
   'Represent data and communicate information graphically.'
 prev: /chapter4
-next: null
+next: /chapter6
 type: chapter
 id: 4
 ---
