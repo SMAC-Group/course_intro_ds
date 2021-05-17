@@ -16,14 +16,8 @@ library(leaflet)
 # Create an empty map
 m <- leaflet()       
 
-# Add the background data
+# Add the default content, from OpenStreetMaps.org
 m <- addTiles(m)
-
-# Centers the view
-m <- setView(m, lng = 7.4353049, lat = 46.952606, zoom = 20) 
-
-# Add a marker
-m <- addMarkers(m, lng = 7.4353049, lat = 46.952606, popup = "Institute of Geography")
 
 # Display the map
 m
@@ -31,7 +25,15 @@ m
 
 ---
 
-## How do I see the result?
+You find the complete example [here](example_1s.R). Here is the result:
+
+<div style="text-align:center">
+  <iframe src="example_1.html" height="480" width="60%" title="Iframe Example"></iframe>
+</div>
+
+---
+
+## Where is the map displayed?
 
 You can see the output directly in `RStudio`, in the `Viewer` tab.
 
@@ -39,9 +41,59 @@ You can see the output directly in `RStudio`, in the `Viewer` tab.
 
 ---
 
+## Let's center the map at a specific location
+
+You can specify the map **center** and **zoom** with the `setView` function.
+
+```r
+# Centers the view
+m <- setView(m, 
+    lng = 7.4353049, 
+    lat = 46.952606, 
+    zoom = 20
+  ) 
+```
+
+---
+
+You find the complete example [here](example_1bs.R). Here is the result:
+
+<div style="text-align:center">
+  <iframe src="example_1b.html" height="480" width="60%" title="Iframe Example"></iframe>
+</div>
+
+---
+
+## Map markers
+
+You can place **popups** with labels at specific places.
+
+```r
+m_latitude = 46.952606
+m_longitude = 7.4353049
+m_popup_text = "Institute of Geography"
+
+# Add a marker
+m <- addMarkers(m, 
+  lng = m_longitude, 
+  lat = m_latitude, 
+  popup = m_popup_text
+)
+```
+
+---
+
+You find the complete example [here](example_1cs.R). Here is the result:
+
+<div style="text-align:center">
+  <iframe src="example_1c.html" height="480" width="60%" title="Iframe Example"></iframe>
+</div>
+
+---
+
 ## Can I see the map without RStudio?
 
-Yes! You can export a single, self-contained, `html` file with the following code.
+Yes! You can export a web page in `html` format with the following code.
 
 ```r
 # load the htmlwidgets package
@@ -55,11 +107,4 @@ saveWidget(m, file="output.html")
 
 You can open `output.html` with any internet browser and share it with anybody.
 
----
-
-Or you can integrate it easily in your websites, blog posts, etc.
-
-<div style="text-align:center">
-  <iframe src="example_1.html" height="480" width="60%" title="Iframe Example"></iframe>
-</div>
-
+You find the complete example [here](example_1ds.R).
