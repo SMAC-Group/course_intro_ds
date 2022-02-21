@@ -12,11 +12,9 @@ id: 6
 
 <exercise id="1" title="General information">
 
-In this chapter we will discuss the fundamentals of Machine Learning.
+In the context of this course, we will overview the fundamentals of machine learning in order to use machine learning examples and context to teach programming. Our objective is to provide an introduction to the essential concepts and the most commonly used algorithms as well as the ability to apply these predictive methods in an applied context. Thus, we will prefer an example-based and code-based approach rather than a formal mathematical approach to the subject. The mathematical notation will therefore be kept to a strict minimum in order to privilege a "hands-on"approach.
 
-In the context of this course, we will overview the fundamentals of machine learning in order to use machine learning examples and context to teach programming. Thus, we will prefer an example-based approach rather than a formal mathematical approach to the subject. The mathematical notation will therefore be kept to a strict minimum in order to privilege a code-based and "hands-on"" approach.
-
-`R` provides a considerable amount of implemented algorithms for prediction and  tools for machine-learning based tasks. The [`caret`]() (short for Classification And REgression Training)  package, written by Max Kuhn, provides a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for:
+`R` provides a considerable amount of implemented algorithms for prediction and tools for machine-learning based tasks. However, these predictive algorithms are often implemented using different syntax, which makes the task of estimating and comparing the performance of these algorithms a bit cumbersome. The [`caret`](https://topepo.github.io/caret/) (short for Classification And REgression Training) package, written by [Max Kuhn](https://www.rstudio.com/authors/max-kuhn/), aims at simplifying this process and provides a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for:
 
 - data splitting
 - pre-processing
@@ -44,28 +42,33 @@ For your reference, we also list some of the interesting resources regarding mac
 </exercise>
 
 
-<exercise id="2" title="What is Machine Learning?" type = "slides">
-<slides source="chapter5_01">
+<exercise id="2" title="Introduction to Machine Learning" type = "slides">
+<slides source="chapter6_01">
 </slides>
 </exercise>
 
 
 <exercise id="3" title="Measuring predictive performance" type = "slides">
-<slides source="chapter5_01">
+<slides source="chapter6_02">
 </slides>
 </exercise>
 
 <exercise id="4" title="Linear and Logistic regression" type = "slides">
-<slides source="chapter5_01">
+<slides source="chapter6_03">
 </slides>
 </exercise>
 
 <exercise id="5" title="Penalized regression" type = "slides">
-<slides source="chapter5_01">
+<slides source="chapter6_04">
 </slides>
 </exercise>
 
 <exercise id="6" title="Trees based methods" type = "slides">
-<slides source="chapter5_01">
+<slides source="chapter6_05">
+</slides>
+</exercise>
+
+<exercise id="6" title="Introduction to Deep learning" type = "slides">
+<slides source="chapter6_06">
 </slides>
 </exercise>
