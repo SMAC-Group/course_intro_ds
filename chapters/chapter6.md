@@ -49,26 +49,21 @@ For your reference, we also list some of the interesting resources regarding mac
 
 
 <exercise id="3" title="Measuring predictive performance" type = "slides">
-<slides source="chapter6_02">
-</slides>
+
 </exercise>
 
 <exercise id="4" title="Linear and Logistic regression" type = "slides">
-<slides source="chapter6_03">
-</slides>
+
 </exercise>
 
 <exercise id="5" title="Penalized regression" type = "slides">
-<slides source="chapter6_04">
-</slides>
+
 </exercise>
 
 <exercise id="6" title="Trees based methods" type = "slides">
-<slides source="chapter6_05">
-</slides>
+
 </exercise>
 
-<exercise id="6" title="Introduction to Deep learning" type = "slides">
-<slides source="chapter6_06">
-</slides>
+<exercise id="7" title="Introduction to Deep learning" type = "slides">
+
 </exercise>
